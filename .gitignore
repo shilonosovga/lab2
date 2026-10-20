@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.vagrant/
+reports/
+*.pem
+*.key
+.env~$*.docx
+tools/trivy.exe

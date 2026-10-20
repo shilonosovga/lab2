@@ -1,0 +1,17 @@
+# УЧЕБНЫЙ ПРИМЕР НЕБЕЗОПАСНОГО DOCKERFILE
+
+# Проблема 1: устаревшая версия Python
+FROM python:3.7-slim
+
+WORKDIR /app
+
+# Проблема 2: зависимости со старыми версиями
+COPY requirements-insecure.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# Проблема 3: копирование всего контекста сборки
+COPY . .
+
+# Проблема 4: запуск от root и использование dev-сервера Flask
+EXPOSE 5000
+CMD ["python", "app.py"]
