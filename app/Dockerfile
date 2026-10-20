@@ -16,8 +16,9 @@ RUN groupadd --system --gid 10001 app \
 
 # Установка зависимостей
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
+RUN pip install --no-cache-dir -r requirements.txt \
+ && pip install --no-cache-dir --upgrade setuptools==78.1.1 \
+ && rm -rf /usr/local/lib/python3.13/site-packages/pkg_resources/tests
 # Копирование кода приложения
 COPY app.py .
 
